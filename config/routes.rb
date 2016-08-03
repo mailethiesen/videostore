@@ -8,10 +8,14 @@ Rails.application.routes.draw do
   resources :courses, only: [:index, :show]
 
   namespace :instructor do
+    resources :sections, only: [] do
+      resources :lessons, only: [:new, :create]
+    end
     resources :courses, only: [:new, :create, :show] do
       resources :sections, only: [:new, :create]
     end
   end
+end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -60,5 +64,3 @@ Rails.application.routes.draw do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
-  #   end
-end
