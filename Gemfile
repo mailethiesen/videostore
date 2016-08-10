@@ -33,6 +33,7 @@ gem 'simple_form'
 gem 'figaro'
 gem 'fog'
 gem 'mini_magick', '~> 4.3.1'
+gem 'carrierwave-aws'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
