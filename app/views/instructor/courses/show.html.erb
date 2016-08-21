@@ -11,9 +11,9 @@
   <div class="text-center">
     <%= link_to 'Add a new section...',new_instructor_course_section_path(current_course), class: 'btn btn-primary btn-lg' %>
 
-    <ul>
-      <% current_course.sections.each do |section| %>
-        <li>
+    <ul class ="sections">
+      <% current_course.sections.rank(:row_order).each do |section| %>
+        <li data-update-url=<%= instructor_section_path(section) %>
           <%= section.title %>
     
           <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'pull-right btn btn-primary btn-xs' %>
@@ -43,9 +43,23 @@ $(function () {
         type: 'PUT',
         url: ui.item.data('update-url'),
         dataType: 'json',
-        data: { lesson: { row_order_position: ui.item.index}}
+        data: { 
+          lesson: { row_order_position: ui.item.index }
+        }
       });
-    
+    }
+  });
+});
+
+$(function () {
+  $('.sections').sortable({
+    update: function( event, ui ) {
+      $.ajax({
+        type: 'PUT',
+        url: ui.item.data('update-url'),
+        dataType: 'json',
+        data: { section: { row_order_position: ui.item.index() } }
+      });
     }
   });
 });
