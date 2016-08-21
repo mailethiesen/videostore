@@ -17,7 +17,7 @@
           <%= section.title %>
     
           <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'pull-right btn btn-primary btn-xs' %>
-          <ul>
+          <ul class ="lessons">
             <% section.lessons.rank(:row_order).each do |lesson| %>
               <li>
                 <b><%= lesson.title %></b>
@@ -34,3 +34,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+$(function () {
+  $('.lessons li').sortable({});
+});
+</script>
