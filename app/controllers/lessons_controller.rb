@@ -3,6 +3,7 @@ class LessonsController < ApplicationController
   before_action :require_enrollment, :only => [:show]
 
   def show
+    @lesson = Lesson.find(params[:id])
   end
 
   private
@@ -18,4 +19,5 @@ class LessonsController < ApplicationController
   def current_lesson
     @current_lesson ||= Lesson.find(params[:id])
   end
+
 end
