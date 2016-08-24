@@ -1,0 +1,66 @@
+  <nav class="navbar navbar-light" role="navigation">
+    <div class="container-fluid">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+          <%= link_to 'VIDEOSTORE', root_url, class: 'navbar-brand' %>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <br class="clr" />
+        <ul class="nav navbar-nav">
+          <li>
+           <%= link_to 'See All Courses', courses_path %>
+         </li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'My Dashboard', dashboard_path %></li>
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to 'Sign in', new_user_session_path %></li>
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+      <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+
+
+
+.navbar {
+  border-radius: 0;
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  -webkit-box-shadow: 0px 3px 5px rgba(100, 100, 100, 0.49);
+  -moz-box-shadow:    0px 3px 5px rgba(100, 100, 100, 0.49);
+  box-shadow:         0px 3px 5px rgba(100, 100, 100, 0.49);
+  margin: 0;
+}
+
+.navbar.navbar-light {
+  margin: 0;
+  background-color: rgba(255,255,255,0.6)
+}
+
+.navbar.navbar-light a.navbar-brand {
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 5px;
+  font-weight: 500px;
+  color: #3ac569;
+  margin:0;
+
+}
+
+.navbar-nav > li > a {
+  color: #3ac569;
+}
